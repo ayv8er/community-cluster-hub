@@ -26,8 +26,8 @@ export default function Home() {
           setWallet(wallets[0].address || "unknown");
         }
       }
-    } catch (err: any) {
-      setError(err.message || "An error occurred during authentication");
+    } catch (err: Error | unknown) {
+      setError(err instanceof Error ? err.message : "An error occurred during authentication");
     }
     setIsLoading(false);
   };

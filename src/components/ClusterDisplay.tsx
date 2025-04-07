@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface ClusterDisplayProps {
   walletAddress?: string;
@@ -10,7 +10,7 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
   const [isFetching, setIsFetching] = useState(false);
   const [isClaiming, setIsClaiming] = useState(false);
 
-  const fetchCampName = async () => {
+  const fetchCampName = useCallback(async () => {
     try {
       const response = await fetch(`https://api.clusters.xyz/v1/names/address/${walletAddress}`);
       const data = await response.json();
@@ -23,23 +23,22 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
     } finally {
       setIsFetching(false);
     }
-  }
+  }, [walletAddress]);
 
   useEffect(() => {
     fetchCampName();
-  }, [walletAddress])
+  }, [walletAddress, fetchCampName]);
 
   const handleClaimName = async () => {
     setIsClaiming(true);
     try {
-      const response = await fetch(`/api/cluster`, {
+      await fetch(`/api/cluster`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ walletAddress, name: claimName }),
       });
-      const data = await response.json();
     } catch (error) {
       console.error("Error claiming name:", error);
     } finally {
