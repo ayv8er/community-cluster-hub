@@ -87,3 +87,19 @@ npm run dev
 - Tailwind CSS
 
 ## Project Structure
+
+```text
+src/
+├── app/
+│   ├── page.tsx           # Main page with Para authentication
+│   └── api/
+│       └── cluster/       # API route for Clusters integration
+│           └── route.ts
+├── components/
+│   ├── WalletDisplay.tsx  # Displays connected wallet
+│   └── ClusterDisplay.tsx # Manages community name
+├── providers/
+│   └── ParaProviders.tsx  # Para SDK configuration
+└── client/
+    └── para.ts           # Para client initialization
+```
