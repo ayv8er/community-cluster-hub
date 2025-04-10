@@ -99,7 +99,6 @@ export default function Home() {
           ExternalWallet.RABBY,
         ]}
         onRampTestMode={false}
-        logo="/camp-logo.svg"
         theme={{
           foregroundColor: "#2D3648",
           backgroundColor: "#FFFFFF",

@@ -15,23 +15,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-const camp: Chain = {
-  id: 123420001114,
-  name: "Basecamp",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Basecamp",
-    symbol: "CAMP",
-  },
-  rpcUrls: {
-    public: { http: ["https://rpc.basecamp.t.raas.gelato.cloud"] },
-    default: { http: ["https://rpc.basecamp.t.raas.gelato.cloud"] },
-  },
-  blockExplorers: {
-    default: { name: "Basecamp", url: "https://basecamp.cloud.blockscout.com/" },
-  },
-} as const satisfies Chain;
-
 const queryClient = new QueryClient();
 
 export const ParaProviders: React.FC<Props> = ({ children }) => {
@@ -40,8 +23,8 @@ export const ParaProviders: React.FC<Props> = ({ children }) => {
       <ParaEvmProvider
         config={{
           projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "",
-          appName: "Camp Cluster",
-          chains: [camp, sepolia, baseSepolia],
+          appName: "Community Cluster",
+          chains: [sepolia, baseSepolia],
           wallets: [metaMaskWallet, rainbowWallet, coinbaseWallet, rabbyWallet],
           para: para,
         }}>

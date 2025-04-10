@@ -10,7 +10,7 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
   const [isFetching, setIsFetching] = useState(false);
   const [isClaiming, setIsClaiming] = useState(false);
 
-  const fetchCampName = useCallback(async () => {
+  const fetchCommunityName = useCallback(async () => {
     try {
       const response = await fetch(`https://api.clusters.xyz/v1/names/address/${walletAddress}`, {
         headers: {
@@ -29,8 +29,8 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
   }, [walletAddress]);
 
   useEffect(() => {
-    fetchCampName();
-  }, [walletAddress, fetchCampName]);
+    fetchCommunityName();
+  }, [walletAddress, fetchCommunityName]);
 
   const handleClaimName = async () => {
     console.log('claim name request params', walletAddress, claimName)
@@ -49,7 +49,7 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
       console.error("Error claiming name:", error);
     } finally {
       setIsClaiming(false);
-      fetchCampName();
+      fetchCommunityName();
     }
   };
 
@@ -59,7 +59,7 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
         <p>Loading your community name...</p>
       ) : communityName ? (
         <p>
-          Your community name is: <strong>campnetwork/{communityName}</strong>
+          Your community name is: <strong>community/{communityName}</strong>
         </p>
       ) : (
         <>
