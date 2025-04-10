@@ -12,11 +12,14 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
 
   const fetchCampName = useCallback(async () => {
     try {
-      const response = await fetch(`https://api.clusters.xyz/v1/names/address/${walletAddress}`);
+      const response = await fetch(`https://api.clusters.xyz/v1/names/address/${walletAddress}`, {
+        headers: {
+          "X-API-Key": process.env.NEXT_PUBLIC_CLUSTERS_API_KEY,
+        },
+      });
       const data = await response.json();
-      if (data.walletName) {
-        setCommunityName(data.walletName);
-      }
+      console.log('fetch cluster response', data);
+      setCommunityName(data.walletName);
     } catch (error) {
       console.error("Error fetching name:", error);
       setCommunityName("");
@@ -30,15 +33,18 @@ export const ClusterDisplay = ({ walletAddress }: ClusterDisplayProps) => {
   }, [walletAddress, fetchCampName]);
 
   const handleClaimName = async () => {
+    console.log('claim name request params', walletAddress, claimName)
     setIsClaiming(true);
     try {
-      await fetch(`/api/cluster`, {
+      const response = await fetch(`/api/cluster`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ walletAddress, name: claimName }),
       });
+      const data = await response.json();
+      console.log('claim name response', data);
     } catch (error) {
       console.error("Error claiming name:", error);
     } finally {

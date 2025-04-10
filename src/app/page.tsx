@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AuthLayout, ExternalWallet, OAuthMethod, ParaModal } from "@getpara/react-sdk";
+import useParaEvmAccount, { 
+  AuthLayout, 
+  ExternalWallet, 
+  OAuthMethod, 
+  ParaModal,
+} from "@getpara/react-sdk";
+
 import { WalletDisplay } from "../components/WalletDisplay";
 import { ClusterDisplay } from "../components/ClusterDisplay";
 import { para } from "../client/para";
@@ -13,17 +19,25 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [wallet, setWallet] = useState<string>("");
   const [error, setError] = useState<string>("");
-
+  
   const handleCheckIfAuthenticated = async () => {
     setIsLoading(true);
     setError("");
     try {
       const isAuthenticated = await para.isFullyLoggedIn();
       setIsConnected(isAuthenticated);
+      
       if (isAuthenticated) {
         const wallets = Object.values(para.getWallets());
         if (wallets?.length) {
+          console.log('web2 login', wallets[0].address)
           setWallet(wallets[0].address || "unknown");
+        } else {
+          const externalWalletAddress = Object.keys(para.externalWallets)[0];
+          if (externalWalletAddress) {
+            console.log('wallet connect', externalWalletAddress)
+            setWallet(externalWalletAddress);
+          }
         }
       }
     } catch (err: Error | unknown) {
