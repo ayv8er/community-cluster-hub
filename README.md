@@ -1,6 +1,6 @@
 # Cluster - Claim Community Name
 
-A Next.js application that allows users to authenticate with [Para](https://www.getpara.com/) and manage their community names on the [Camp Network](https://www.campnetwork.xyz/) using the Clusters API.
+A Next.js application that allows users to authenticate with [Para](https://www.getpara.com/) and manage their community names.
 
 ## Application Flow
 
