@@ -16,19 +16,19 @@ type Props = {
 };
 
 const camp: Chain = {
-  id: 325000,
-  name: "Camp Network Testnet V2",
+  id: 123420001114,
+  name: "Basecamp",
   nativeCurrency: {
     decimals: 18,
-    name: "Camp Network Testnet V2",
-    symbol: "ETH",
+    name: "Basecamp",
+    symbol: "CAMP",
   },
   rpcUrls: {
-    public: { http: ["https://rpc-campnetwork.xyz"] },
-    default: { http: ["https://rpc-campnetwork.xyz"] },
+    public: { http: ["https://rpc.basecamp.t.raas.gelato.cloud"] },
+    default: { http: ["https://rpc.basecamp.t.raas.gelato.cloud"] },
   },
   blockExplorers: {
-    default: { name: "Camp Network Testnet V2", url: "https://camp-network-testnet.blockscout.com" },
+    default: { name: "Basecamp", url: "https://basecamp.cloud.blockscout.com/" },
   },
 } as const satisfies Chain;
 
