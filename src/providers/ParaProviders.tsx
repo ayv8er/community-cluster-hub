@@ -8,7 +8,7 @@ import {
   rainbowWallet,
 } from "@getpara/evm-wallet-connectors";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { type Chain, sepolia, baseSepolia } from "wagmi/chains";
+import { sepolia, baseSepolia } from "wagmi/chains";
 import { para } from "../client/para";
 
 type Props = {
