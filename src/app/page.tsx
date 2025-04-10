@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useParaEvmAccount, { 
+import { 
   AuthLayout, 
   ExternalWallet, 
   OAuthMethod, 
@@ -19,7 +19,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [wallet, setWallet] = useState<string>("");
   const [error, setError] = useState<string>("");
-  
+    
   const handleCheckIfAuthenticated = async () => {
     setIsLoading(true);
     setError("");
