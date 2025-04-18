@@ -8,7 +8,7 @@ Clusters Claim Page: https://testnet.clusters.xyz/community/camp/register
 
 # Claim Testnet Name on Custom Build
 
-Demo App URL: 
+Demo App URL: https://para-camp-community-cluster.vercel.app/
 
 Clusters API v1 Documentation URL: https://docs.clusters.xyz/getting-started/api
 
