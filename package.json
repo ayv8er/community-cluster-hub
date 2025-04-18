@@ -12,15 +12,16 @@
     "@getpara/react-sdk": "^1.11.0",
     "@getpara/wagmi-v2-integration": "^1.11.0",
     "@getpara/web-sdk": "^1.8.0",
+    "@tailwindcss/postcss": "^4.1.4",
     "@tanstack/react-query": "^5.74.4",
     "next": "15.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tailwindcss": "^4.1.4",
     "wagmi": "^2.14.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.3",
     "@types/estree": "^1.0.7",
     "@types/json-schema": "^7.0.15",
     "@types/node": "^20.17.30",
