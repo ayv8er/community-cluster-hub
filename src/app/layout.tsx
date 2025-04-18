@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ParaProviders } from "../providers/ParaProviders";
+import Provider from "../Provider";
 import "./globals.css";
+import { headers } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,23 +15,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Para Community Hub",
+  title: "Camp Community Hub",
   description: "Claim your community name.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersObj = await headers();
+  const cookies = headersObj.get("cookie");
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ParaProviders>
+        <Provider cookies={cookies}>
           {children}
-        </ParaProviders>
+        </Provider>
       </body>
     </html>
   );
